@@ -3,7 +3,7 @@
 //  Animation
 //
 //  Created by Terry Wang on 1/12/15.
-//  Copyright (c) 2015 tataUFO. All rights reserved.
+//  Copyright (c) 2015 Terry. All rights reserved.
 //
 
 import UIKit

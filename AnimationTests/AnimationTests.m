@@ -3,7 +3,7 @@
 //  AnimationTests
 //
 //  Created by terry on 8/29/14.
-//  Copyright (c) 2014 tataUFO. All rights reserved.
+//  Copyright (c) 2014 Terry. All rights reserved.
 //
 
 #import <XCTest/XCTest.h>
