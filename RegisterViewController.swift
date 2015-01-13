@@ -19,79 +19,68 @@ class RegisterViewController: UIViewController {
     @IBOutlet weak var maleCheck: UIImageView!
     @IBOutlet weak var femaleCheck: UIImageView!
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-    }
-    
-    override func viewDidLayoutSubviews() {
-        toggleMaleSelection(false)
-        toggleFemaleSelection(false)
-    }
+    var gender: String = ""
+    var factor: CGFloat = CGFloat(1.6)
     
     @IBAction func didTapMale(sender: AnyObject) {
-        toggleMaleSelection(true)
-        toggleFemaleSelection(false)
+        if gender != "male" {
+            gender = "male"
+            updateUI()
+        }
     }
     
     @IBAction func didTapFemale(sender: AnyObject) {
-        toggleMaleSelection(false)
-        toggleFemaleSelection(true)
-    }
-    
-    func toggleMaleSelection(flag: Bool) {
-        let view = self.maleAvatar
-        let text = self.maleText
-        let check = self.maleCheck
-        
-        if flag {
-            let scale = CGAffineTransformMakeScale(1, 1)
-            let transform = CGAffineTransformTranslate(scale, 0, 0)
-            
-            UIView.animateWithDuration(0.3, delay: 0, usingSpringWithDamping: 0.5, initialSpringVelocity: 0.5, options: nil , animations: {
-                view.transform = transform
-                view.alpha = 1
-                text.alpha = 1
-                check.alpha = 1
-            }, completion: nil)
-        } else {
-            let scale = CGAffineTransformMakeScale(0.6, 0.6)
-            let transform = CGAffineTransformTranslate(scale, 40.5, 35)
-            check.alpha = 0
-            UIView.animateWithDuration(0.1, animations: {
-                view.transform = transform
-                view.alpha = 0.6
-                text.alpha = 0.6
-            })
-            
+        if gender != "female" {
+            gender = "female"
+            updateUI()
         }
     }
     
-    func toggleFemaleSelection(flag: Bool) {
-        let view = self.femaleAvatar
-        let text = self.femaleText
-        let check = self.femaleCheck
+    func updateUI() {
+        setHighlight()
+        setLowlight()
+    }
+    
+    func setLowlight() {
+        let check = (gender == "male") ? femaleCheck : maleCheck
+        let avatar = (gender == "male") ? femaleAvatar : maleAvatar
+        let text = (gender == "male") ? femaleText : maleText
+    
+        check.alpha = 0
+        UIView.animateWithDuration(0.1, animations: {
+            avatar.transform = CGAffineTransformIdentity
+            avatar.alpha = 0.6
+            text.alpha = 0.6
+        })
+    }
+    
+    func setHighlight() {
+        let check = (gender == "male") ? maleCheck : femaleCheck
+        let avatar = (gender == "male") ? maleAvatar : femaleAvatar
+        let text = (gender == "male") ? maleText : femaleText
         
-        if flag {
-            let scale = CGAffineTransformMakeScale(1, 1)
-            let transform = CGAffineTransformTranslate(scale, 0, 0)
-            
-            UIView.animateWithDuration(0.3, delay: 0, usingSpringWithDamping: 0.5, initialSpringVelocity: 0.5, options: nil , animations: {
-                view.transform = transform
-                view.alpha = 1
-                text.alpha = 1
-                check.alpha = 1
-            }, completion: nil)
+        UIView.animateWithDuration(0.3, delay: 0, usingSpringWithDamping: 0.5, initialSpringVelocity: 0.5, options: nil , animations: {
+            avatar.transform = self.transform()
+            avatar.alpha = 1
+            text.alpha = 1
+            check.alpha = 1
+        }, completion: nil)
+    }
+    
+    func transform() -> CGAffineTransform {
+        var tx = CGFloat(0), ty = CGFloat(0)
+        
+        if gender == "male" {
+            tx = -maleAvatar.frame.size.width * (factor - 1) / 2
+            ty = -maleAvatar.frame.size.height * (factor - 1) / 2
         } else {
-            let scale = CGAffineTransformMakeScale(0.6, 0.6)
-            let transform = CGAffineTransformTranslate(scale, -40.67, 36.33)
-            check.alpha = 0
-            UIView.animateWithDuration(0.1, animations: {
-                view.transform = transform
-                view.alpha = 0.6
-                text.alpha = 0.6
-            })
-            
+            tx = femaleAvatar.frame.size.width * (factor - 1) / 2
+            ty = -femaleAvatar.frame.size.height * (factor - 1) / 2
         }
         
+        let translate = CGAffineTransformMakeTranslation(tx, ty)
+        let scale = CGAffineTransformMakeScale(factor, factor)
+        
+        return CGAffineTransformConcat(scale, translate)
     }
 }
