@@ -16,29 +16,82 @@ class RegisterViewController: UIViewController {
     @IBOutlet weak var maleAvatar: UIImageView!
     @IBOutlet weak var femaleAvatar: UIImageView!
     
+    @IBOutlet weak var maleCheck: UIImageView!
+    @IBOutlet weak var femaleCheck: UIImageView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        let scale = CGAffineTransformMakeScale(0.8, 0.8)
-        let translate = CGAffineTransformMakeTranslation(maleAvatar.frame.size.width * 0.2, maleAvatar.frame.size.height * 0.2)
-
-        maleAvatar.transform = CGAffineTransformConcat(scale, translate)
-    }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+    override func viewDidLayoutSubviews() {
+        toggleMaleSelection(false)
+        toggleFemaleSelection(false)
     }
-    */
-
+    
+    @IBAction func didTapMale(sender: AnyObject) {
+        toggleMaleSelection(true)
+        toggleFemaleSelection(false)
+    }
+    
+    @IBAction func didTapFemale(sender: AnyObject) {
+        toggleMaleSelection(false)
+        toggleFemaleSelection(true)
+    }
+    
+    func toggleMaleSelection(flag: Bool) {
+        let view = self.maleAvatar
+        let text = self.maleText
+        let check = self.maleCheck
+        
+        if flag {
+            let scale = CGAffineTransformMakeScale(1, 1)
+            let transform = CGAffineTransformTranslate(scale, 0, 0)
+            
+            UIView.animateWithDuration(0.3, delay: 0, usingSpringWithDamping: 0.5, initialSpringVelocity: 0.5, options: nil , animations: {
+                view.transform = transform
+                view.alpha = 1
+                text.alpha = 1
+                check.alpha = 1
+            }, completion: nil)
+        } else {
+            let scale = CGAffineTransformMakeScale(0.6, 0.6)
+            let transform = CGAffineTransformTranslate(scale, 40.5, 35)
+            check.alpha = 0
+            UIView.animateWithDuration(0.1, animations: {
+                view.transform = transform
+                view.alpha = 0.6
+                text.alpha = 0.6
+            })
+            
+        }
+    }
+    
+    func toggleFemaleSelection(flag: Bool) {
+        let view = self.femaleAvatar
+        let text = self.femaleText
+        let check = self.femaleCheck
+        
+        if flag {
+            let scale = CGAffineTransformMakeScale(1, 1)
+            let transform = CGAffineTransformTranslate(scale, 0, 0)
+            
+            UIView.animateWithDuration(0.3, delay: 0, usingSpringWithDamping: 0.5, initialSpringVelocity: 0.5, options: nil , animations: {
+                view.transform = transform
+                view.alpha = 1
+                text.alpha = 1
+                check.alpha = 1
+            }, completion: nil)
+        } else {
+            let scale = CGAffineTransformMakeScale(0.6, 0.6)
+            let transform = CGAffineTransformTranslate(scale, -40.67, 36.33)
+            check.alpha = 0
+            UIView.animateWithDuration(0.1, animations: {
+                view.transform = transform
+                view.alpha = 0.6
+                text.alpha = 0.6
+            })
+            
+        }
+        
+    }
 }

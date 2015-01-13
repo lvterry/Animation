@@ -30,7 +30,6 @@
 		978F19F519B07205003DE825 /* a7.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 978F19ED19B07205003DE825 /* a7.jpg */; };
 		978F19F619B07205003DE825 /* a8.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 978F19EE19B07205003DE825 /* a8.jpg */; };
 		978F19F919B08788003DE825 /* ParticipantPopViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 978F19F819B08788003DE825 /* ParticipantPopViewController.m */; };
-		97AB7F921A2D73740036C7A4 /* Crashlytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 97AB7F911A2D73740036C7A4 /* Crashlytics.framework */; };
 		97C41E261A63C443009A9527 /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97C41E251A63C443009A9527 /* RegisterViewController.swift */; };
 /* End PBXBuildFile section */
 
@@ -76,7 +75,6 @@
 		978F19EE19B07205003DE825 /* a8.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = a8.jpg; sourceTree = "<group>"; };
 		978F19F719B08788003DE825 /* ParticipantPopViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ParticipantPopViewController.h; path = ../ParticipantPopViewController.h; sourceTree = "<group>"; };
 		978F19F819B08788003DE825 /* ParticipantPopViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ParticipantPopViewController.m; path = ../ParticipantPopViewController.m; sourceTree = "<group>"; };
-		97AB7F911A2D73740036C7A4 /* Crashlytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Crashlytics.framework; sourceTree = "<group>"; };
 		97C41E241A63C443009A9527 /* Animation-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Animation-Bridging-Header.h"; sourceTree = "<group>"; };
 		97C41E251A63C443009A9527 /* RegisterViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
 		F6F3498462284998A84C85B7 /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = "<group>"; };
@@ -87,7 +85,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				97AB7F921A2D73740036C7A4 /* Crashlytics.framework in Frameworks */,
 				3DACE96E5E87413BB3F127A3 /* libPods.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -114,7 +111,6 @@
 			isa = PBXGroup;
 			children = (
 				97C41E251A63C443009A9527 /* RegisterViewController.swift */,
-				97AB7F911A2D73740036C7A4 /* Crashlytics.framework */,
 				9766688819B02D5E0074670D /* Animation */,
 				9766689F19B02D5E0074670D /* AnimationTests */,
 				9766688719B02D5E0074670D /* Products */,
@@ -203,7 +199,6 @@
 				9766688319B02D5E0074670D /* Frameworks */,
 				9766688419B02D5E0074670D /* Resources */,
 				9A80C7D02EEC4722B3BAD3B3 /* Copy Pods Resources */,
-				97AB7F901A2D733F0036C7A4 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -318,19 +313,6 @@
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
-		};
-		97AB7F901A2D733F0036C7A4 /* ShellScript */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "./Crashlytics.framework/run 8840821ad6b3fa411e2f8fa09d61cb8378e8eb63 38063a7f68650c65b4ea4e2dd8e45afc80702b8ffb25f45cef36be71e9dfd014";
 		};
 		9A80C7D02EEC4722B3BAD3B3 /* Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
