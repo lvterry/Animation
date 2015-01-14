@@ -19,7 +19,7 @@ class RegisterViewController: UIViewController {
     @IBOutlet weak var maleCheck: UIImageView!
     @IBOutlet weak var femaleCheck: UIImageView!
     
-    var gender: String = ""
+    var gender: String?
     var factor: CGFloat = CGFloat(1.6)
     
     @IBAction func didTapMale(sender: AnyObject) {
@@ -78,8 +78,8 @@ class RegisterViewController: UIViewController {
             ty = -femaleAvatar.frame.size.height * (factor - 1) / 2
         }
         
-        let translate = CGAffineTransformMakeTranslation(tx, ty)
         let scale = CGAffineTransformMakeScale(factor, factor)
+        let translate = CGAffineTransformMakeTranslation(tx, ty)
         
         return CGAffineTransformConcat(scale, translate)
     }
